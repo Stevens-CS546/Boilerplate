@@ -1,3 +1,13 @@
+var MongoClient = require('mongodb').MongoClient,
+ settings = require('./config.js'),
+ Guid = require('Guid');
+
+var fullMongoUrl = settings.mongoConfig.serverUrl + settings.mongoConfig.database;
 var exports = module.exports = {};
 
-// You can now add export properties to the exports object to be accessible from outside this file
+MongoClient.connect(fullMongoUrl)
+    .then(function(db) {
+        var myCollection = db.collection("COLLECTION_NAME");
+        
+        // setup your exports!
+    });
