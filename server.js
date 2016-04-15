@@ -1,6 +1,7 @@
 // We first require our express package
 var express = require('express');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var myData = require('./data.js');
 
 // This package exports the function to create an express instance:
@@ -10,6 +11,7 @@ var app = express();
 app.set('view engine', 'ejs');
 
 // This is called 'adding middleware', or things that will help parse your request
+app.use(cookieParser());
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
